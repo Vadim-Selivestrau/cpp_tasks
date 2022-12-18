@@ -1,0 +1,1 @@
+SELECT Singer, SUM(Sale) AS 'TOTAL SALES' FROM Artists GROUP BY (Singer) HAVING(SUM(Sale)) > 2000000;
