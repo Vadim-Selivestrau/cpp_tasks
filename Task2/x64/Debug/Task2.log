@@ -1,3 +1,4 @@
 ﻿  Task2.cpp
-D:\programming\tests\innowise sap\Task2\Task2.cpp(31,23): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+D:\programming\tests\innowise sap\Task2\Task2.cpp(11,13): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+D:\programming\tests\innowise sap\Task2\Task2.cpp(32,23): warning C4244: =: преобразование "float" в "int", возможна потеря данных
   Task2.vcxproj -> D:\programming\tests\innowise sap\Task2\x64\Debug\Task2.exe
