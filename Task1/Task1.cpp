@@ -1,8 +1,10 @@
-﻿// IF ARRAY IS NOT SORTED
+﻿// IF ARRAY IS SORTED
 #include <filesystem>
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 #include <string>
+
 
 int main()
 {
@@ -32,14 +34,21 @@ int main()
 
         while (in >> n) data[k++] = n;
 
+        std::sort(data, data + count);
 
-        for (int i = 0; i < count; i++)
+        int leftIndex = 0; 
+        int rightIndex = count - 1; 
+        while (leftIndex != rightIndex)
         {
-            for (int j = 0; j < count; j++) {
-                if (data[i] + data[j] == 2023) {
-                    std::cout << data[i] << " + " << data[j] << " = 2023" << std::endl;
-                    return 1;
-                }
+            int curSum = data[leftIndex] + data[rightIndex];
+            if (curSum < 2023)
+                leftIndex++;
+            else if (curSum > 2023)
+                rightIndex--;
+            else 
+            {
+                std::cout << data[leftIndex] << " + " << data[rightIndex] << " = 2023" << std::endl;
+                return 0;
             }
         }
     }
