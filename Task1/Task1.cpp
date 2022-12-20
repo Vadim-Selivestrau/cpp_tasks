@@ -4,6 +4,8 @@
 #include <fstream>
 #include <algorithm>
 #include <string>
+#include <unordered_map>
+#include <typeinfo>
 
 
 int main()
@@ -13,44 +15,30 @@ int main()
     const std::string filename = "Input.txt";
     std::string path = (fs::current_path().string() + "\\" + filename);
     
+    std::unordered_map<int, int> umap;
 
-    std::string line;
-
-    int n,count = 0;
+    int n = 0;
 
     std::ifstream in(path);  
     if (in.is_open())
     {
 
-        //get count of numbers
-        while (in >> n) ++count;
-
         in.clear();
         in.seekg(0, std::ios::beg);
 
-        int* data = new int[count];
 
-        int k = 0;
+        while (in >> n) umap[n] = 2023-n;
 
-        while (in >> n) data[k++] = n;
 
-        std::sort(data, data + count);
-
-        int leftIndex = 0; 
-        int rightIndex = count - 1; 
-        while (leftIndex != rightIndex)
+        for (auto i = umap.begin(); i != umap.end(); i++) 
         {
-            int curSum = data[leftIndex] + data[rightIndex];
-            if (curSum < 2023)
-                leftIndex++;
-            else if (curSum > 2023)
-                rightIndex--;
-            else 
-            {
-                std::cout << data[leftIndex] << " + " << data[rightIndex] << " = 2023" << std::endl;
-                return 0;
+        
+            if (umap.find(i->second) != umap.end()) {
+                std::cout << i->first<< " + " << i->second << " = 2023"<< std::endl;
+                break;
             }
         }
+           
     }
     in.close();
     std::cout << "End of program" << std::endl;
